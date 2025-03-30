@@ -1,7 +1,9 @@
 import { useCart } from "@/context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const { cartItems, addToCart, removeFromCart } = useCart();
+  const navigate = useNavigate();
 
   const formattedPrice = (price: number, currency: string) =>
     new Intl.NumberFormat("en-US", {
@@ -30,7 +32,7 @@ function Cart() {
                   {cartItems.map((cartItem) => (
                     <li
                       key={cartItem.product.id}
-                      className="grid grid-cols-[80px_1fr_auto_auto_auto_auto] items-center gap-4 py-2 w-full overflow-hidden"
+                      className="grid w-full grid-cols-[80px_1fr_auto_auto_auto_auto] items-center gap-4 overflow-hidden py-2"
                     >
                       <div>
                         <img
@@ -43,15 +45,18 @@ function Cart() {
                         {cartItem.product.name}
                       </div>
                       <div className="w-24 truncate">
-                        {formattedPrice(cartItem.product.price, cartItem.product.currency)}
+                        {formattedPrice(
+                          cartItem.product.price,
+                          cartItem.product.currency,
+                        )}
                       </div>
                       <button
                         aria-label="Decrease quantity"
-                        className="flex items-center justify-center w-6 h-6 rounded hover:bg-base-300"
+                        className="flex h-6 w-6 items-center justify-center rounded hover:bg-base-300"
                         onClick={() => removeFromCart(cartItem.product.id, 1)}
                       >
                         <svg
-                          className="w-3 h-3"
+                          className="h-3 w-3"
                           viewBox="0 0 24 24"
                           xmlns="http://www.w3.org/2000/svg"
                         >
@@ -67,11 +72,11 @@ function Cart() {
                       <div>{cartItem.qty}</div>
                       <button
                         aria-label="Increase quantity"
-                        className="flex items-center justify-center w-6 h-6 rounded hover:bg-base-300"
+                        className="flex h-6 w-6 items-center justify-center rounded hover:bg-base-300"
                         onClick={() => addToCart(cartItem.product)}
                       >
                         <svg
-                          className="w-3 h-3"
+                          className="h-3 w-3"
                           viewBox="0 0 24 24"
                           xmlns="http://www.w3.org/2000/svg"
                         >
@@ -105,8 +110,14 @@ function Cart() {
               </div>
             )}
             <div className="mt-4 flex justify-end">
-  <button className="btn btn-primary">Proceed to Checkout</button>
-</div>
+              <button
+                className="btn-primary btn"
+                disabled={cartItems.length === 0}
+                onClick={() => navigate("/checkout")}
+              >
+                Proceed to Checkout
+              </button>
+            </div>
           </div>
         </div>
       </section>
