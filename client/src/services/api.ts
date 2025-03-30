@@ -2,7 +2,7 @@ import axios from "axios";
 import Product from "../../../shared/types/product";
 
 const apiClient = axios.create({
-  baseURL: `http://${import.meta.env.VITE_SERVER_HOST}:${import.meta.env.VITE_SERVER_PORT}`,
+  baseURL: `http://${import.meta.env.VITE_API_SERVER_HOST}:${import.meta.env.VITE_API_SERVER_PORT}`,
   headers: {
     "Content-Type": "application/json",
   },

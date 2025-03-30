@@ -1,4 +1,5 @@
 import Product from "../../../shared/types/product";
+import { useCart } from "@/context/CartContext";
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +10,8 @@ function ProductCard({ product }: ProductCardProps) {
     style: "currency",
     currency: product.currency,
   }).format(product.price / 100);
+
+  const { addToCart } = useCart();
 
   return (
     <div className="card w-96 bg-base-100 shadow-sm">
@@ -31,7 +34,7 @@ function ProductCard({ product }: ProductCardProps) {
         </p>
         <div className="mt-6">
           {product.qty > 0 ? (
-            <button className="btn-primary btn-active btn-block btn">
+            <button className="btn-primary btn-active btn-block btn" onClick={() => addToCart(product)}>
               Add to Cart
             </button>
           ) : (

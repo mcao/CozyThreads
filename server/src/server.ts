@@ -3,12 +3,12 @@ import cors from "cors";
 import logger from "./utils/logger";
 import dotenv from "dotenv";
 
-dotenv.config({ path: "../../../.env" });
+dotenv.config({ path: "../.env" });
+const port = process.env.VITE_API_SERVER_PORT;
 
 import productsRouter from "./routes/products";
 
 const app = express();
-const port = process.env.VITE_API_SERVER_HOST;
 
 app.use(cors());
 app.use(logger);
