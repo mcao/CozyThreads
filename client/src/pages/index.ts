@@ -1,4 +1,5 @@
+import { Cart } from "./Cart";
 import { Home } from "./Home";
 import { NoMatch } from "./NoMatch";
 
-export { Home, NoMatch };
+export { Cart, Home, NoMatch };
