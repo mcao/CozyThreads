@@ -12,15 +12,14 @@ function ReturnContent() {
   useEffect(() => {
     const clientSecret = searchParams.get("payment_intent_client_secret");
     if (!stripe || !clientSecret) return;
-    
-    const source = searchParams.get("source");
-    if (source === "popup") {
-      window.close();
-    }
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
       if (paymentIntent?.status === "succeeded") {
         setStatus("success");
+
+        if (window.opener) {
+          setTimeout(() => window.close(), 3000);
+        }
       } else {
         setStatus("error");
       }
