@@ -3,7 +3,7 @@ import Product from "../../../shared/types/product";
 import CartItem from "@/types/cart";
 
 const apiClient = axios.create({
-  baseURL: `http://${import.meta.env.VITE_API_SERVER_HOST}:${
+  baseURL: `${import.meta.env.VITE_API_SERVER_PROTOCOL}://${import.meta.env.VITE_API_SERVER_HOST}:${
     import.meta.env.VITE_API_SERVER_PORT
   }`,
   headers: {
