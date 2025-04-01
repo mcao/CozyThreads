@@ -17,7 +17,7 @@ function ReturnContent() {
       if (paymentIntent?.status === "succeeded") {
         setStatus("success");
 
-        if (window.opener) {
+        if (window.opener && window.opener !== window) {
           setTimeout(() => window.close(), 3000);
         }
       } else {
