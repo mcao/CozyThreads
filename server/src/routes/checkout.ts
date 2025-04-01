@@ -1,7 +1,6 @@
 import express from "express";
 import stripe from "../utils/stripeClient";
 
-import products from "../data/products";
 import Product from "../../../shared/types/product";
 
 const router = express.Router();

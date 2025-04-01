@@ -3,7 +3,7 @@ import Product from "../../../shared/types/product";
 const products: Product[] = [
   {
     id: "prod-1",
-    qty: 0,
+    qty: 10,
     name: "Comfy T-Shirt",
     description:
       "A high-quality, ethically sourced, and very comfy t-shirt. Soft, breathable, sustainably farmed cotton.",
@@ -39,7 +39,7 @@ const products: Product[] = [
   },
   {
     id: "prod-4",
-    qty: 10,
+    qty: 0,
     name: "Comfy Canvas Tote Bag",
     description:
       "A stylish, utilitarian canvas tote bag. Ethically made, reusable—classic for sustainability.",

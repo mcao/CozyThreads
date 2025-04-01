@@ -9,10 +9,6 @@ const LayoutFooter: FC = () => {
           <p>Ethically made apparel for everyday comfort.</p>
         </div>
         <div>
-          <span className="footer-title">Links</span>
-          <a className="link-hover link">Home</a>
-          <a className="link-hover link">About</a>
-          <a className="link-hover link">Contact</a>
         </div>
       </footer>
     </>
